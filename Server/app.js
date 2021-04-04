@@ -25,6 +25,7 @@ mongoose.connection.on("error", err => {
   })
 
 app.use('/api/signup',require('./Routes/signup'));
+app.use('/api/signin',require('./Routes/signin'));
 app.listen(3000,()=>{
     console.log('app is running on 3000');
 })
