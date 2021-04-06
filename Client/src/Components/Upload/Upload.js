@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Progress } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
-
+import { Redirect } from 'react-router-dom';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './Upload.css';
@@ -11,7 +11,8 @@ import './Upload.css';
 class Upload extends React.Component {
   state = {
     selectedVideos: null,
-    loaded: 0
+    loaded: 0,
+    ok:false
   }
 
   maxSelectFile(event) {
@@ -51,29 +52,35 @@ class Upload extends React.Component {
     for (let i = 0; i < this.state.selectedVideos.length; i++) {
       data.append('file', this.state.selectedVideos[i]);
     }
-    axios.post('http://127.0.0.1:3000/api/upload', data,{
-        
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userTokenTime')).token
-            }
-    }  ,{
+    axios.post('http://127.0.0.1:3000/api/upload', data, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userTokenTime')).token
+      }
+    }, {
       onUploadProgress: ProgressEvent => {
         this.setState({
           loaded: (ProgressEvent.loaded / ProgressEvent.total * 100)
         });
       }
     }).then(res => {
-      toast.success('Upload Successful');
+        this.setState({
+            ok:true,
+        })
+        console.log(res);
+     
     }).catch(err => {
+        console.log(err);
       toast.error(`Upload Fail with status: ${err.statusText}`);
     });
   }
+  
 
   render() {
-    
+    if (!localStorage.getItem('userTokenTime')) return <Redirect to="/signIn" />
     return (
     
+        
         <div className="container mt-5">
           <div className="form-group">
             <ToastContainer />
@@ -97,12 +104,15 @@ class Upload extends React.Component {
               <button
                 type="button"
                 className="btn btn-success btn-block"
-                onClick={this.fileUploadHandler.bind(this)}>Upload Video
+                onClick={this.fileUploadHandler.bind(this)
+                
+                }>Upload Video
               </button>
+            
             </div>
           </form>
         </div>
-     
+      
     );
   }
 }

@@ -20,8 +20,20 @@ limits:{
 
 
 router.post('/',upload.single('file'),(req,res,next)=>{
-res.status(200).json({
-
-})
+  
+  const videoDetails = new VideoDetail({
+    uploader_name: req.userData.data.firstName,
+    upload_title: req.file.filename.replace(/ /g, '_'),
+    video_path: 'http://127.0.0.1:3000' + '/api/videos/' + req.file.filename.replace(/ /g, '_'), 
+   
+  });
+  videoDetails
+    .save()
+    .then(result => {
+      console.log(result);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
 module.exports=router;

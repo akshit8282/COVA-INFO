@@ -4,9 +4,11 @@ const checkAuth=(req,res,next)=>{
 
 
         const token = req.headers.authorization.split(" ")[1];
-        console.log(token);
+        
         var decoded = jwt.verify(token, 'secret');
+       
 req.userData=decoded;
+
 next();
       } catch(err) {
         res.status(400).json({message:err});
