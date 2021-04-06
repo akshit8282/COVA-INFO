@@ -10,7 +10,7 @@ export class Signin extends Component {
           email: '',
           password: '',
           token: '',
-          redirect: localStorage.getItem('userTokenTime') ? true : false
+         
         }
     
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -25,7 +25,15 @@ export class Signin extends Component {
             email: this.state.email,
             password: this.state.password
           }).then(res => {
-           console.log(res);
+            console.log(res.data);
+          this.setState({
+            token:res.data.token
+          });
+          const data={
+            token:this.state.token,
+            time:new Date().getTime()
+          }
+          localStorage.setItem('userTokenTime', JSON.stringify(data));
           }).catch(err => {
             console.log(err);
           });

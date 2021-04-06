@@ -1,6 +1,7 @@
 const express=require('express');
 const router=express.Router();
 const multer=require('multer');
+const VideoDetail=require('../Models/VideoDetail');
 //multer
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -20,7 +21,7 @@ limits:{
 
 router.post('/',upload.single('file'),(req,res,next)=>{
 res.status(200).json({
-message:'vid uploaded'
+
 })
 });
 module.exports=router;

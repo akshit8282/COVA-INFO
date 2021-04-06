@@ -3,6 +3,8 @@ const User=require('../Models/User');
 const express=require('express');
 const router=express.Router();
 const bcrypt=require('bcrypt');
+const jwt=require('jsonwebtoken');
+
 router.post('/',(req,res,next)=>{
 User.find({email:req.body.email}).exec().
 then(user=>{
@@ -16,7 +18,19 @@ then(user=>{
                return res.status(400).json({message:'auth failed'});
             }if(result){
                
-                return res.status(200).json({result:'authenticated'});
+               //token creation
+           var token=jwt.sign({
+    data:{
+        userId: user[0]._id,
+        firstName: user[0].firstName,
+        lastName: user[0].lastName,
+        email: user[0].email,
+    }
+  }, 'secret', { expiresIn: '1h' });
+return res.status(200).json({
+    message:'authenticated',
+    token:token
+})
             }
            return res.status(400).json({message:'auth failed'});
         })
