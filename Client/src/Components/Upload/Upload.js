@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+
 import { Progress } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import { Redirect } from 'react-router-dom';
@@ -12,7 +12,8 @@ class Upload extends React.Component {
   state = {
     selectedVideos: null,
     loaded: 0,
-    ok:false
+    ok:true,
+    ee:""
   }
 
   maxSelectFile(event) {
@@ -46,38 +47,77 @@ class Upload extends React.Component {
       });
     }
   }
-
+  
   fileUploadHandler(event) {
     const data = new FormData();
     for (let i = 0; i < this.state.selectedVideos.length; i++) {
       data.append('file', this.state.selectedVideos[i]);
     }
-    axios.post('http://127.0.0.1:3000/api/upload', data, {
+
+    const options={
+      onUploadProgress: ProgressEvent => {
+        console.log(ProgressEvent);
+        this.setState({
+          loaded: (ProgressEvent.loaded / ProgressEvent.total * 100),
+        
+        });
+    
+  }
+}
+//using fetch api
+
+const requestOptions = {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json','Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userTokenTime')).token },
+  
+  body: data,
+  options:options
+};
+fetch('http://127.0.0.1:3000/api/upload', requestOptions)
+  .then(response => {response.json();
+   this.setState({loaded:100})
+    toast.success(`Uploaded Successfull`);
+  })
+  .catch(err=>{
+    this.setState({loaded:0})
+    toast.error(`Upload Fail with status: ${err.statusText}`);
+  })
+
+//console.log(JSON.parse(localStorage.getItem('userTokenTime')).token);
+    /*axios.post('http://127.0.0.1:3000/api/upload', data, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userTokenTime')).token
       }
-    }, {
-      onUploadProgress: ProgressEvent => {
-        this.setState({
-          loaded: (ProgressEvent.loaded / ProgressEvent.total * 100)
-        });
-      }
-    }).then(res => {
-        this.setState({
-            ok:true,
-        })
-        console.log(res);
+    },options ).then(res => {
+     console.log(res);
      
     }).catch(err => {
+      this.setState({
+        ok:false,
+        ee:err
+      })
         console.log(err);
       toast.error(`Upload Fail with status: ${err.statusText}`);
     });
+    setTimeout(() => {  console.log("World!"); }, 100000);
+    if(this.state.ok&&this.state.ee==""){
+      
+     
+     
+      this.setState({
+        loaded:100
+      })
+      toast.success(`uploaded`); 
+    }
+    console.log(this.state.loaded)*/
   }
-  
+ 
 
   render() {
+
     if (!localStorage.getItem('userTokenTime')) return <Redirect to="/signIn" />
+   
     return (
     
         
@@ -108,7 +148,7 @@ class Upload extends React.Component {
                 
                 }>Upload Video
               </button>
-            
+           
             </div>
           </form>
         </div>
