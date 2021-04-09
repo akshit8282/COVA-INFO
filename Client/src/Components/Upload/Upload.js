@@ -3,7 +3,7 @@ import React from 'react';
 import { Progress } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import { Redirect } from 'react-router-dom';
-
+import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import './Upload.css';
 
@@ -66,31 +66,32 @@ class Upload extends React.Component {
 }
 //using fetch api
 
-const requestOptions = {
+/*const requestOptions = {
   method: 'POST',
   headers: { 'Content-Type': 'application/json','Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userTokenTime')).token },
   
-  body: data,
+  body: new URLSearchParams(data),
   options:options
 };
 fetch('http://127.0.0.1:3000/api/upload', requestOptions)
-  .then(response => {response.json();
-   this.setState({loaded:100})
-    toast.success(`Uploaded Successfull`);
+  .then(response => {
+    console.log(response)
+    
+   
   })
   .catch(err=>{
-    this.setState({loaded:0})
-    toast.error(`Upload Fail with status: ${err.statusText}`);
+   console.log(err);
   })
-
+*/
 //console.log(JSON.parse(localStorage.getItem('userTokenTime')).token);
-    /*axios.post('http://127.0.0.1:3000/api/upload', data, {
+    axios.post('http://127.0.0.1:3000/api/upload', data, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userTokenTime')).token
       }
-    },options ).then(res => {
+    },options).then(res => {
      console.log(res);
+     toast.success(`uploaded`); 
      
     }).catch(err => {
       this.setState({
@@ -108,9 +109,9 @@ fetch('http://127.0.0.1:3000/api/upload', requestOptions)
       this.setState({
         loaded:100
       })
-      toast.success(`uploaded`); 
+     
     }
-    console.log(this.state.loaded)*/
+   
   }
  
 
