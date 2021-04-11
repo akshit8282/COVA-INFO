@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Form from '../Form'
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 import axios from 'axios'
 export class Signin extends Component {
     constructor(props) {
@@ -10,7 +10,7 @@ export class Signin extends Component {
           email: '',
           password: '',
           token: '',
-         
+         redirect:false
         }
     
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -34,6 +34,9 @@ export class Signin extends Component {
             time:new Date().getTime()
           }
           localStorage.setItem('userTokenTime', JSON.stringify(data));
+          this.setState({
+            redirect:true
+          })
           }).catch(err => {
             console.log(err);
           });
@@ -54,6 +57,7 @@ export class Signin extends Component {
         });
       }
     render() {
+      if (this.state.redirect) return <Redirect to="/" />;
         return (
             <Form onSubmit={this.onSubmitHandler.bind(this)}>
             <h3 className="text-center text-info">Login</h3>

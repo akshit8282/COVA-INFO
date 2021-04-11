@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import './Upload.css';
+import Navbar from '../Navbar/Navbar';
 
 
 class Upload extends React.Component {
@@ -121,7 +122,8 @@ fetch('http://127.0.0.1:3000/api/upload', requestOptions)
    
     return (
     
-        
+        <React.Fragment>
+          <Navbar/>
         <div className="container mt-5">
           <div className="form-group">
             <ToastContainer />
@@ -153,7 +155,7 @@ fetch('http://127.0.0.1:3000/api/upload', requestOptions)
             </div>
           </form>
         </div>
-      
+      </React.Fragment>
     );
   }
 }
