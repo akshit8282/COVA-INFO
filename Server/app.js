@@ -37,7 +37,7 @@ app.use('/api/signin',require('./Routes/signin'));
 app.use('/api/upload',checkAuth,require('./Routes/upload'));
 console.log(__dirname);
 //app.use('/api/videos',require('./Routes/video'));
-//app.use('/api/videos',require('./Routes/video'));
+app.use('/api/videoList',checkAuth,require('./Routes/videoList'));
 app.listen(3000,()=>{
     console.log('app is running on 3000');
 })

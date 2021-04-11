@@ -12,7 +12,7 @@ if(user.length>1){
     //hash password
     bcrypt.hash(req.body.password,10,(err,hash)=>{
         if(err){
-            return res.status(400).json({message:err});
+            return
         }
         //generate user
         else{
