@@ -7,9 +7,12 @@ import upload from './Components/Upload/Upload'
 import Dashboard from './Components/Dashboard/Dashboard';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import signOut from './Components/signOut.js/signOut';
+import Homepage from './Components/Homepage/Homepage';
 function App() {
   return (
     <div className="App">
+     <Route exact path='/home' component={Homepage}/>
+  
      <Route exact path='/' component={Dashboard}/>
 
      <Route exact path='/video/:videoTitle' component={VideoPlayer}/>  
