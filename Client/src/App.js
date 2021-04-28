@@ -8,10 +8,12 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import signOut from './Components/signOut.js/signOut';
 import Homepage from './Components/Homepage/Homepage';
+import delhi from '../src/Components/Hospitaldata/Delhi'
 function App() {
   return (
     <div className="App">
      <Route exact path='/home' component={Homepage}/>
+  <Route exact path='/bed' component={delhi}/>
   
      <Route exact path='/' component={Dashboard}/>
 

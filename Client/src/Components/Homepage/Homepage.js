@@ -10,6 +10,9 @@ export class Homepage extends Component {
         Confirmed:'loading',
         deaths:'loading',
         date:'loading',
+        confirmedIn:'loading',
+        deathsIn:'loading',
+        dateIn:'laoding'
     }
     componentDidMount=()=>{
         axios.get('https://cors-anywhere.herokuapp.com/https://2019ncov.asia/api/cdr', {headers: {'Access-Control-Allow-Origin': '*'},
@@ -24,6 +27,20 @@ let date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
                 date:date
             })
         }).catch()
+        axios.get('https://cors-anywhere.herokuapp.com/https://2019ncov.asia/api/country_region', {headers: {'Access-Control-Allow-Origin': '*'},
+    }).then(res=>{
+     
+         console.log(res.data.results[93].confirmed);
+         const d = new Date( res.data.results[93].last_updated);
+         let date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
+         
+         this.setState({
+            confirmedIn:res.data.results[93].confirmed,
+            deathsIn:res.data.results[93].deaths,
+            dateIn:date
+        })
+
+  }).catch()
     }
     render() {
         return (
@@ -33,14 +50,25 @@ let date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
                 <CssBaseline />
       
      
-        <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '150vh',width: '98%',margin:'auto' }} >
+        <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '200vh',width: '98%',margin:'auto' }} >
 
-<h1 className="p-5">Numbers At Glance</h1>
+<h1 className="p-5">Numbers At Glance In World</h1>
 <h3>Updated At</h3>
 <h4>{this.state.date}</h4>
 <div className="d-flex flex-row" style={{justifyContent:'space-evenly'}}>
-<Card name="Confirmed Cases" cases={this.state.Confirmed}/>
-<Card  name="Confirmed Deaths" cases={this.state.deaths}/>
+<Card name="Confirmed Cases" cases={this.state.Confirmed} link="https://www.worldometers.info/coronavirus/"/>
+<Card  name="Confirmed Deaths" cases={this.state.deaths} link="https://www.worldometers.info/coronavirus/"/>
+
+</div>
+
+       
+<h1 className="p-3" >Numbers At Glance In India</h1>
+<h3>Updated At</h3>
+<h4>{this.state.dateIn}</h4>
+<div className="d-flex flex-row" style={{justifyContent:'space-evenly'}}>
+<Card name="Confirmed Cases" cases={this.state.confirmedIn} link="https://www.worldometers.info/coronavirus/country/india/"/>
+
+<Card  name="Confirmed Deaths" cases={this.state.deathsIn} link="https://www.worldometers.info/coronavirus/country/india/"/>
 
 </div>
 

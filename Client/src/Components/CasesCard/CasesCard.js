@@ -42,7 +42,8 @@ export default function MediaCard(props) {
           Share
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          <a href={props.link}>
+          Learn More</a>
         </Button>
       </CardActions>
     </Card>
