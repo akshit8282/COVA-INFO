@@ -11,7 +11,7 @@ import Homepage from './Components/Homepage/Homepage';
 import delhi from '../src/Components/Hospitaldata/Delhi'
 function App() {
   return (
-    <div className="App">
+    <div >
      <Route exact path='/' component={Homepage}/>
   <Route exact path='/bed' component={delhi}/>
   

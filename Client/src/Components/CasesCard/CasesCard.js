@@ -29,10 +29,10 @@ export default function MediaCard(props) {
           title="Contemplative Reptile"
         />
         <CardContent>
-          <Typography gutterBottom variant="h3" component="h2">
+          <Typography gutterBottom variant="h3"  className="text-center" component="h2">
             {props.name}
           </Typography>
-          <Typography variant="body2"  component="h4" style={{color:'red'}}>
+          <Typography variant="body2"  component="h4"  className="text-center" style={{color:'red'}}>
           {props.cases}
           </Typography>
         </CardContent>

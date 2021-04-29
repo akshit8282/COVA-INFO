@@ -51,21 +51,21 @@ let date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
                 <CssBaseline />
       
      
-        <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '200vh',width: '98%',margin:'auto' }} >
+        <Typography component="div"   style={{ backgroundColor: '#cfe8fc', height: '300vh',width: '98%' ,margin:"auto"}} >
 
-<h1 className="p-5">Numbers At Glance In World</h1>
-<h3>Updated At</h3>
-<h4>{this.state.date}</h4>
+<h1 className="p-5 text-center">Numbers At Glance In World</h1>
+<h3 className="text-center">Updated At</h3>
+<h4  className="text-center">{this.state.date}</h4>
 <div className="d-flex flex-row" style={{justifyContent:'space-evenly'}}>
 <Card name="Confirmed Cases" cases={this.state.Confirmed} link="https://www.worldometers.info/coronavirus/"/>
 <Card  name="Confirmed Deaths" cases={this.state.deaths} link="https://www.worldometers.info/coronavirus/"/>
 
 </div>
 
-       
-<h1 className="p-3" >Numbers At Glance In India</h1>
-<h3>Updated At</h3>
-<h4>{this.state.dateIn}</h4>
+<hr style={{height:"6px",width:"50%",margin:"auto",marginTop:"40px",backgroundColor:"darkblue",borderRadius:"9px"}}/>
+<h1 className="p-3"  className="text-center" >Numbers At Glance In India</h1>
+<h3  className="text-center">Updated At</h3>
+<h4  className="text-center">{this.state.dateIn}</h4>
 <div className="d-flex flex-row" style={{justifyContent:'space-evenly'}}>
 <Card name="Confirmed Cases" cases={this.state.confirmedIn} link="https://www.worldometers.info/coronavirus/country/india/"/>
 
@@ -76,7 +76,7 @@ let date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
 
 
         </Typography>
-
+       
 
         <div style={{height:"5px"}}></div>
         
