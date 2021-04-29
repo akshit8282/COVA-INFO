@@ -5,7 +5,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios'
 import Delhihospitalinfo from './delhihospitalinfo/delhihospitalinfo'
+import virus from '../../images/virus.png'
+import hand from '../../images/handsanitizer.png'
 
+import styles  from './Homepage.module.css';
 export class Homepage extends Component {
     state={
         Confirmed:'loading',
@@ -51,25 +54,25 @@ let date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
                 <CssBaseline />
       
      
-        <Typography component="div"   style={{ backgroundColor: '#cfe8fc', height: '300vh',width: '98%' ,margin:"auto"}} >
+        <Typography component="div"  className={styles.div1} >
 
-<h1 className="p-5 text-center">Numbers At Glance In World</h1>
+<h1 className="p-5 text-center display-3">Numbers At Glance In World</h1>
 <h3 className="text-center">Updated At</h3>
 <h4  className="text-center">{this.state.date}</h4>
 <div className="d-flex flex-row" style={{justifyContent:'space-evenly'}}>
-<Card name="Confirmed Cases" cases={this.state.Confirmed} link="https://www.worldometers.info/coronavirus/"/>
-<Card  name="Confirmed Deaths" cases={this.state.deaths} link="https://www.worldometers.info/coronavirus/"/>
+<Card name="Confirmed Cases" image={virus} cases={this.state.Confirmed} link="https://www.worldometers.info/coronavirus/"/>
+<Card  name="Confirmed Deaths" image={hand} cases={this.state.deaths} link="https://www.worldometers.info/coronavirus/"/>
 
 </div>
 
 <hr style={{height:"6px",width:"50%",margin:"auto",marginTop:"40px",backgroundColor:"darkblue",borderRadius:"9px"}}/>
-<h1 className="p-3"  className="text-center" >Numbers At Glance In India</h1>
+<h1 className="mt-8"  className="text-center  display-3" >Numbers At Glance In India</h1>
 <h3  className="text-center">Updated At</h3>
 <h4  className="text-center">{this.state.dateIn}</h4>
 <div className="d-flex flex-row" style={{justifyContent:'space-evenly'}}>
-<Card name="Confirmed Cases" cases={this.state.confirmedIn} link="https://www.worldometers.info/coronavirus/country/india/"/>
+<Card name="Confirmed Cases" image={virus} cases={this.state.confirmedIn} link="https://www.worldometers.info/coronavirus/country/india/"/>
 
-<Card  name="Confirmed Deaths" cases={this.state.deathsIn} link="https://www.worldometers.info/coronavirus/country/india/"/>
+<Card  name="Confirmed Deaths"  image={hand} cases={this.state.deathsIn} link="https://www.worldometers.info/coronavirus/country/india/"/>
 
 </div>
 <Delhihospitalinfo/>

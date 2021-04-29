@@ -8,12 +8,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
   },
   media: {
-    height: 140,
+    height: 170,
   },
 });
 
@@ -25,22 +26,20 @@ export default function MediaCard(props) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          image={props.image}
+          title="Wear Mask"
         />
         <CardContent>
           <Typography gutterBottom variant="h3"  className="text-center" component="h2">
             {props.name}
           </Typography>
-          <Typography variant="body2"  component="h4"  className="text-center" style={{color:'red'}}>
+          <Typography variant="h3"  component="h1"  className="text-center" style={{color:'red'}}>
           {props.cases}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions className="d-flex flex-row" style={{justifyContent:'space-evenly'}}>
-        <Button size="small" color="primary">
-          Share
-        </Button>
+       
         <Button size="small" color="primary">
           <a href={props.link}>
           Learn More</a>

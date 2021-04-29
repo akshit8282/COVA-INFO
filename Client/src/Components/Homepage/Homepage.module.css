@@ -1,0 +1,22 @@
+.div1{
+    height: 300vh;
+    width:100%;
+    margin:auto;
+    position: relative;
+
+}
+.div1::after {
+    content: "";
+    
+    background: rgb(3, 50, 66) url(../../images/covid.jpg) no-repeat fixed top;
+    opacity: 0.3;
+    top: 0;
+    background-size: cover;
+    height:300vh;
+    background-blend-mode: luminosity;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
