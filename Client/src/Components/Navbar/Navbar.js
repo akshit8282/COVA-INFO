@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
+import './Navbar.css'
+
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +13,10 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-info">
+      <React.Fragment>
+      
+      <nav className="navbar navbar-expand-lg navbar-light bg-info imageWrapper">
+        
         <div className="container">
           <Link className="navbar-brand" to="/">COVA-INFO</Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +42,9 @@ class Navbar extends React.Component {
             </div>
           </div>
         </div>
+        <div className="img"></div>
       </nav>
+      </React.Fragment>
     );
   }
 }
