@@ -18,7 +18,7 @@ class VideoPlayer extends React.Component {
     axios.get('http://127.0.0.1:3000/api/videoList', {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userTokenTime')).token
+       
       }
     }).then(res => {
         console.log(res)
@@ -52,7 +52,7 @@ class VideoPlayer extends React.Component {
   }
 
   render() {
-    if (!localStorage.getItem('userTokenTime')) return <Redirect to="/signIn" />
+   
     return (
       
         <div className="row" style={{ width: "45vw",height:"20vw" }}>

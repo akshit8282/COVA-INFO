@@ -10,31 +10,20 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
-    let shouldRedirect = false;
-    if (localStorage.getItem('userTokenTime')) {
-      // Check if user holds token which is valid in accordance to time
-      const data = JSON.parse(localStorage.getItem('userTokenTime'));
-      if (new Date().getTime() - data.time > (1 * 60 * 60 * 1000)) {
-        // It's been more than hour since you have visited dashboard
-        localStorage.removeItem('userTokenTime');
-        shouldRedirect = false;
-      }
-    } else {
-      shouldRedirect = true;
-    }
+    
 
     this.state = {
-      redirect: shouldRedirect,
+     
       videoList: []
     }
   }
 
   componentDidMount() {
-    if (localStorage.getItem('userTokenTime')) {
+    
       axios.get('http://127.0.0.1:3000/api/videoList', {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userTokenTime')).token
+         
         }
       }).then(res => {
         console.log(res);
@@ -43,14 +32,14 @@ class Dashboard extends React.Component {
         });
       });
     }
-  }
+  
 
   render() {
-    if (this.state.redirect) return <Redirect to="/signIn" />
+   
 
     const videos = this.state.videoList.map(video => {
       return (
-        <div className="video col-xs-12 col-sm-12 col-md-3 col-lg-4" key={video._id}>
+        <div className="video col-xs-12 col-sm-12 col-md-3 col-lg-4 py-3" key={video._id}>
           <Link to={'/video/' + video.upload_title}>
             <div className="video-thumbnail">
               <img src={video.thumbnail_path} alt="video thubmnail" />
@@ -69,11 +58,13 @@ class Dashboard extends React.Component {
     return (
      <React.Fragment>
        <Navbar/>
+       <h5 style={{backgroundColor:"greenyellow"}}><marquee>To upload Your video,SignIn To The Portal</marquee></h5>
         <div className="container mt-5">
-          <h4>Videos</h4>
+         
+          <h1>How to Stay Healthy</h1>
           <hr className="my-4" />
 
-          <div className="streams row">
+          <div className="streams row py-4">
             {videos}
           </div>
         </div>

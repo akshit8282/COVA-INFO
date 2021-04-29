@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios'
+import Delhihospitalinfo from './delhihospitalinfo/delhihospitalinfo'
 
 export class Homepage extends Component {
     state={
@@ -71,8 +72,12 @@ let date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
 <Card  name="Confirmed Deaths" cases={this.state.deathsIn} link="https://www.worldometers.info/coronavirus/country/india/"/>
 
 </div>
+<Delhihospitalinfo/>
+
 
         </Typography>
+
+
         <div style={{height:"5px"}}></div>
         
         <Typography component="div" className="bg-info" style={{ height: '200px',width: '98%',margin:'auto' }} >

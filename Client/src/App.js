@@ -12,10 +12,10 @@ import delhi from '../src/Components/Hospitaldata/Delhi'
 function App() {
   return (
     <div className="App">
-     <Route exact path='/home' component={Homepage}/>
+     <Route exact path='/' component={Homepage}/>
   <Route exact path='/bed' component={delhi}/>
   
-     <Route exact path='/' component={Dashboard}/>
+     <Route exact path='/dashboard' component={Dashboard}/>
 
      <Route exact path='/video/:videoTitle' component={VideoPlayer}/>  
     <Route exact path='/signIn' component={signin}/>

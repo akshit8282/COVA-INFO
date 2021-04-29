@@ -5,7 +5,7 @@ const signOut = props => {
   if (localStorage.getItem('userTokenTime')) {
     localStorage.removeItem('userTokenTime');
   }
-  return <Redirect to="/signIn" />;
+  return <Redirect to="/" />;
 }
 
 export default signOut;
