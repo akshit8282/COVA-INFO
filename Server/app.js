@@ -13,11 +13,11 @@ app.use(cors());
 app.use(express.urlencoded({limit: '50mb',extended:false}));
 app.use(express.json({limit: '50mb'}));
 
-app.use('/api/videos',express.static('uploads'))
+app.use('/api/videos/',express.static('uploads'))
 
 
 //setting mongoose
-mongoose.connect("mongodb://localhost/VideoServer", {
+mongoose.connect("mongodb+srv://akshit:batra123@cluster0.k8asp.mongodb.net/CovaInfo?retryWrites=true&w=majority", {
   useNewUrlParser: "true",
   useUnifiedTopology: 'true',
   useCreateIndex: 'true'
