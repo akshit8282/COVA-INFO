@@ -4,7 +4,7 @@ const { createWriteStream } = require('fs');
 const VideoDetails = require('../models/VideoDetail');
 const port = 3000
 
-const ffmpegPath = 'C:\\ffmpeg\\bin\\ffmpeg.exe';
+const ffmpegPath = 'C:\\ffmpeg\\ffmpeg\\bin\\ffmpeg.exe';
 const width = 256;
 const height = 144;
 

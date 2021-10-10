@@ -9,6 +9,7 @@ import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import signOut from './Components/signOut.js/signOut';
 import Homepage from './Components/Homepage/Homepage';
 import delhi from '../src/Components/Hospitaldata/Delhi'
+import hospitalAddress from '../src/Components/Hospitaldata/hospitaladdress/hospitaladdress'
 function App() {
   return (
     <div >
@@ -22,6 +23,7 @@ function App() {
     <Route exact path='/signUp' component={signup}/>
     <Route exact path='/upload' component={upload}/>
     <Route exact path='/signOut' component={signOut}/>
+    <Route exact path='/data/:id' component={hospitalAddress}/>
     </div>
   );
 }
