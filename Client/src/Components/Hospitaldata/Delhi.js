@@ -31,7 +31,7 @@ var data=JSON.parse(obj).beds;
     }
     render() {
         let url=`/data/`;
-const getinfo=(key)=>{
+/*const getinfo=(key)=>{
     axios.get('https://cors-anywhere.herokuapp.com/https://coronabeds.jantasamvad.org/covid-facilities.js', {headers: {'Access-Control-Allow-Origin': '*'},
 }).then(res=>{
     //console.log(res.data);
@@ -52,15 +52,15 @@ address:ele
  console.log(this.state.address);
 
 }).catch()
-}
+}*/
 
 
 if(!this.state.result) return <h1>loading</h1>
-if(this.state.address) return <div><Hospitaladdress  add={this.state.address}/></div>
+
 
 const arr=Object.keys(this.state.result).map(key=>{
 return <div id="table" className="row border p-3"  >
-    <div className="col"><a href={url+key} style={{color:"black",fontSize:"20px"}} key={key} onClick={()=>getinfo(key)}>{key.split(",")}</a></div>
+    <div className="col"><a href={url+key} style={{color:"black",fontSize:"20px"}} key={key}>{key.split(",")}</a></div>
     <div className="col">{this.state.result[key].total}</div>
     <div className="col">{this.state.result[key].vacant}</div>
     <div className="col">{this.state.result[key].last_updated_at}</div>

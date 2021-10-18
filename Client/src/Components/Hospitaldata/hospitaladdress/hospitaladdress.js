@@ -1,30 +1,72 @@
-import React from 'react'
 
-const hospitaladdress = (props) => {
-    console.log(props.location.pathname.split('/')[2]);
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+import './hospitaladdress.css'
 
-    //const arr=Object.keys(props.add).map(a=>{
-        /*return <div > 
+
+const Hospitaladdress = (props) => {
+    const [address, setaddress] = useState({});
+    const [loading, setloading] = useState(true);
+    const path=props.location.pathname.split('/')[2];
+    
+    useEffect(async () => {
+        // Update the document title using the browser API
+        await axios.get('https://cors-anywhere.herokuapp.com/https://coronabeds.jantasamvad.org/covid-facilities.js', {headers: {'Access-Control-Allow-Origin': '*'},
+}).then(res=>{
+    
+ //console.log((res.data.split("=")[1]));
+
+var obj=res.data.split("= ")[1];
+obj=obj.split(";")[0];
+var data=JSON.parse(obj);
+var ele;
+
+Object.keys(data).map(k=>{
+    if(k==path){
+
+     ele=data[k];
+
+        }
+})
+
+ setaddress(ele);
+ setloading(false);
+ console.log(ele);
+
+}).catch()
+      },[]);
+
+    const arr=Object.keys(address).map(a=>{
+        return <div > 
         
     
-        
-                <h2 className="py-2"><b>{a}</b> :-</h2>
-                <h6>{props.add[a]}</h6>
+        {a=="contact_numbers"?<div>
+            <h2><b>{a}:-</b></h2>
+            <h6>{address[a][0]}</h6>
+            <h6>{address[a][1]}</h6>
+        </div>:<div><h2><b>{a}</b> :-</h2>
+        <h6>{address[a]}</h6>
+        </div>}
+                
+                
+                
             
         </div>
     })
-    return (
-        <div style={{marginTop:"60px",backgroundColor:"lightcyan",height:"60vh"}}>
+    const model=loading==true?(<div class="loader"></div>): (
         
+        <div style={{backgroundColor:"lightcyan",height:"90vh"}}>
+        <h1 style={{textAlign:'center'}}>{path}</h1>
             {arr}
             <button style={{width:"50px",borderRadius:"10px",backgroundColor:"darkblue"}}><a style={{textDecoration:"none",color:"white"}} href="/bed">Back</a></button>
         </div>
-    )*/
-    return(
+    );
+    return <div style={{backgroundColor:'black',height:'100vh',display:'flex',alignItems:'center',justifyContent:'center'}}>{model}</div>
+    /*return(
 <div>
     <h1>hlo</h1>
 </div>
-    );
+    );*/
 }
 
-export default hospitaladdress
+export default Hospitaladdress
