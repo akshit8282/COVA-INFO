@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
+import Header from '../header/header'
 import './Navbar.css'
 
 class Navbar extends React.Component {
@@ -14,10 +14,10 @@ class Navbar extends React.Component {
   render() {
     return (
       <React.Fragment>
-      
-      <nav className="navbar navbar-expand-lg navbar-light bg-info imageWrapper">
+     
+      <nav className="navbar navbar-expand-lg nav " >
         
-        <div className="container">
+        <div className="container" style={{height:'70px' ,color:'white'}}>
           <Link className="navbar-brand" to="/">COVA-INFO</Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -44,8 +44,10 @@ class Navbar extends React.Component {
             </div>
           </div>
         </div>
-        <div className="img"></div>
+        <div ></div>
       </nav>
+      <div className="img">
+      </div>
       </React.Fragment>
     );
   }
