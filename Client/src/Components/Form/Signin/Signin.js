@@ -31,7 +31,8 @@ export class Signin extends Component {
           });
           const data={
             token:this.state.token,
-            time:new Date().getTime()
+            time:new Date().getTime(),
+          userName:res.data.userName
           }
           localStorage.setItem('userTokenTime', JSON.stringify(data));
           this.setState({

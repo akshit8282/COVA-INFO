@@ -39,14 +39,14 @@ Object.keys(data).map(k=>{
     const arr=Object.keys(address).map(a=>{
         return <div > 
         
-    
-        {a=="contact_numbers"?<div>
+    {a=="location"?null:a=="contact_numbers"?<div>
             <h2><b>{a}:-</b></h2>
             <h6>{address[a][0]}</h6>
             <h6>{address[a][1]}</h6>
         </div>:<div><h2><b>{a}</b> :-</h2>
-        <h6>{address[a]}</h6>
+        <p>{address[a]}</p>
         </div>}
+        
                 
                 
                 

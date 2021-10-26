@@ -10,6 +10,7 @@ import signOut from './Components/signOut.js/signOut';
 import Homepage from './Components/Homepage/Homepage';
 import delhi from '../src/Components/Hospitaldata/Delhi'
 import HospitalAddress from '../src/Components/Hospitaldata/hospitaladdress/hospitaladdress'
+import PersonalDashboard from '../src/Components/PersonalDashboard/PersonalDashboard'
 function App() {
   return (
     <div >
@@ -17,7 +18,7 @@ function App() {
   <Route exact path='/bed' component={delhi}/>
   
      <Route exact path='/dashboard' component={Dashboard}/>
-
+     <Route exact path='/personaldashboard' component={PersonalDashboard}/>
      <Route exact path='/video/:videoTitle' component={VideoPlayer}/>  
     <Route exact path='/signIn' component={signin}/>
     <Route exact path='/signUp' component={signup}/>

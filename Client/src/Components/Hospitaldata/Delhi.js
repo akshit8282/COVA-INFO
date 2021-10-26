@@ -25,7 +25,9 @@ var data=JSON.parse(obj).beds;
     })
     
     
-}).catch()
+}).catch(err=>{
+    console.log(err);
+})
 //information of hospital
 
     }

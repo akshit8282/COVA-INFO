@@ -30,6 +30,7 @@ class Navbar extends React.Component {
                   <NavLink className="nav-item nav-link" to="/upload">Upload a video</NavLink>
                   <NavLink className="nav-item nav-link" to="/signOut">Sign Out</NavLink>
                   <NavLink className="nav-item nav-link" to="/dashboard">Dashboard</NavLink>
+                  <NavLink className="nav-item nav-link" to="/personaldashboard">Your Dashboard</NavLink>
                 </React.Fragment>
                 :
                 <React.Fragment>
@@ -37,6 +38,7 @@ class Navbar extends React.Component {
                   <NavLink className="nav-item nav-link" to="/signIn">Sign In</NavLink>
                   <NavLink className="nav-item nav-link" to="/signUp">Sign Up</NavLink>
                   <NavLink className="nav-item nav-link" to="/dashboard">Dashboard</NavLink>
+                 
 
                 </React.Fragment>}
             </div>
