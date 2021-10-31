@@ -36,13 +36,13 @@ class Dashboard extends React.Component {
 
   render() {
    
-
+const path='http://127.0.0.1:3000/api/videos/video_thumbnails/'
     const videos = this.state.videoList.map(video => {
       return (
         <div className="video col-xs-12 col-sm-12 col-md-3 col-lg-4 py-3" key={video._id}>
           <Link to={'/video/' + video.upload_title}>
             <div className="video-thumbnail">
-              <img src={video.thumbnail_path} alt="video thubmnail" />
+              <img src={path+video.thumbnail_path} alt="video thubmnail" />
             </div>
           </Link>
           <span className="username">

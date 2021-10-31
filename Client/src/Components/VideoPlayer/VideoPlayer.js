@@ -24,13 +24,14 @@ class VideoPlayer extends React.Component {
         console.log(res)
       res.data.map(video => {
         if (video.upload_title === this.props.match.params.videoTitle) {
+          console.log(video.video_path.trim().split("\\")[2])
           this.setState({
             loaded: true,
             videoJsOptions: {
               autoplay: false,
               controls: true,
               sources: [{
-                src: video.video_path
+                src:'http://127.0.0.1:3000/api/videos/'+video.video_path.trim().split("\\")[2]
               }]
             }
           }, () => {

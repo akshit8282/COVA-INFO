@@ -4,7 +4,8 @@ const { createWriteStream } = require('fs');
 const VideoDetails = require('../models/VideoDetail');
 const port = 3000
 
-const ffmpegPath = 'C:\\ffmpeg\\ffmpeg\\bin\\ffmpeg.exe';
+
+const ffmpegPath='C:\\Users\\hp\\ffmpeg\\bin\\ffmpeg.exe'
 const width = 256;
 const height = 144;
 
@@ -33,7 +34,7 @@ const generateThumbnail = (target, title, username) => {
     uploader_name: username,
     upload_title: title,
     video_path: target,
-    thumbnail_path: 'http://127.0.0.1:' + port + '/api/videos/video_thumbnails/' + encodeURIComponent(title + '.jpg')
+    thumbnail_path:encodeURIComponent(title + '.jpg')
   });
   videoDetails
     .save()

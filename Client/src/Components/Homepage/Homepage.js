@@ -13,6 +13,7 @@ import CaseShowIndia from '../CaseShow/CaseShowIndia'
 import CaseShowWorld from '../../Components/CaseShow/CaseShowWorld'
 import styles  from './Homepage.module.css';
 import CaseShow from '../CaseShow/CaseShowIndia';
+import VideoSection from '../VideoSection/VideoSection'
 export class Homepage extends Component {
     state={
         Confirmed:'loading',
@@ -69,9 +70,11 @@ let date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
 <CaseShowIndia image={virus} confirmed={this.state.confirmedIn} deaths={this.state.deathsIn} date={this.state.dateIn}/>
 </div>
 <hr style={{height:"6px",width:"50%",margin:"auto",marginTop:"40px",backgroundColor:"darkblue",borderRadius:"9px"}}/>
+
 <Delhihospitalinfo/>
-
-
+<hr style={{height:"6px",width:"50%",margin:"auto",marginTop:"40px",backgroundColor:"darkblue",borderRadius:"9px"}}/>
+<hr style={{height:"6px",width:"55%",margin:"auto",marginTop:"50px",backgroundColor:"darkblue",borderRadius:"9px"}}/>
+<VideoSection/>
         </Typography>
        
 

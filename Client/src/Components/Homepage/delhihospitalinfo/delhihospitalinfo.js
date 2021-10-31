@@ -1,16 +1,31 @@
 import React from 'react'
 import firstaid from '../../../images/firstaid.png'
+import './delhihospitalinfo.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 function delhihospitalinfo() {
     return (
         <div>
             <hr style={{height:"6px",width:"55%",margin:"auto",marginTop:"50px",backgroundColor:"darkblue",borderRadius:"9px"}}/>
             <br>
             </br>
-       <div className="d-flex flex-row mt-5" style={{justifyContent:'space-evenly'}} >     
-<img src={firstaid} height="200px" width="200px" alt="firstaid"/>
-<h1 style={{marginTop:"70px"}} className=" display-3">Information related to hospitals in Delhi!!</h1>
+            <h1 style={{textAlign:'center',fontFamily:'monospace'}}> To All Delhi People!</h1><br></br>
+       <div id="contentdiv"  >     
+       <img src="https://images.livemint.com/img/2021/07/11/600x338/20210706_DLI-HT-MN_Kejriwal-001_1625904538312_1625995704134.jpg"/>
+            <div id="contentdivtext" >
+                
+                <h2 id="contentdivheading">Now U can check Corona Beds Available In All Hospital</h2>
+                <h4 id="content">Here is our new feature added.<br></br>Finding hospital with no of bed occupied 
+                <br></br>and All the information well updated and taken from<br></br> official Government Site.<br></br>
+                Click down to View All Info!!
+                </h4>
+                <a style={{ display:'flex',justifyContent:'center',textDecoration:"none",fontFamily:'serif',fontSize:'30px',}} href="/bed"><span style={{border:'2px solid black',borderRadius:"30px",width:'100px',textAlign:'center',backgroundColor:'black',color:"white"}}><FontAwesomeIcon icon={faArrowAltCircleRight} />
+</span></a>
+            </div>
+
+
 </div>
-<a style={{ display:'flex',justifyContent:'center',textDecoration:"none",fontFamily:'serif',fontSize:'30px',}} href="/bed"><span style={{border:'2px solid black',borderRadius:"30px",width:'130px',textAlign:'center',backgroundColor:"red",color:"white"}}>ClickIt</span></a>
+
         </div>
     )
 }
