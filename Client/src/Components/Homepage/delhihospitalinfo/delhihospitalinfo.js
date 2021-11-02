@@ -14,8 +14,8 @@ function delhihospitalinfo() {
        <img src="https://images.livemint.com/img/2021/07/11/600x338/20210706_DLI-HT-MN_Kejriwal-001_1625904538312_1625995704134.jpg"/>
             <div id="contentdivtext" >
                 
-                <h2 id="contentdivheading">Now U can check Corona Beds Available In All Hospital</h2>
-                <h4 id="content">Here is our new feature added.<br></br>Finding hospital with no of bed occupied 
+                <h2 className="container-fluid contentdivheading" id="">Now U can check Corona Beds Available In All Hospital</h2>
+                <h4 className="container" id="content">Here is our new feature added.<br></br>Finding hospital with no of bed occupied 
                 <br></br>and All the information well updated and taken from<br></br> official Government Site.<br></br>
                 Click down to View All Info!!
                 </h4>

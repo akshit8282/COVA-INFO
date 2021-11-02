@@ -14,6 +14,8 @@ import CaseShowWorld from '../../Components/CaseShow/CaseShowWorld'
 import styles  from './Homepage.module.css';
 import CaseShow from '../CaseShow/CaseShowIndia';
 import VideoSection from '../VideoSection/VideoSection'
+import Footer from '../Footer/Footer'
+import Vaccine from '../Vaccine/VaccineCenter'
 export class Homepage extends Component {
     state={
         Confirmed:'loading',
@@ -53,15 +55,16 @@ let date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
     }
     render() {
         return (
-            <div>
+            <div id="homepage">
                 <Navbar/>
                 <Header/>
+               
                 <h1 style={{backgroundColor:"yellow"}}><marquee>Corona Facts!!</marquee></h1>
                 <CssBaseline />
       
    
-        <Typography component="div"  className={styles.div1} >
-        <div style={{display:'flex',justifyContent:'space-around'}}>
+        <div   className={styles.div1} >
+        <div className={styles.cards} >
         <CaseShowWorld image={virus} confirmed={this.state.Confirmed} deaths={this.state.deaths} date={this.state.date}/>
 
 
@@ -75,28 +78,12 @@ let date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
 <hr style={{height:"6px",width:"50%",margin:"auto",marginTop:"40px",backgroundColor:"darkblue",borderRadius:"9px"}}/>
 <hr style={{height:"6px",width:"55%",margin:"auto",marginTop:"50px",backgroundColor:"darkblue",borderRadius:"9px"}}/>
 <VideoSection/>
-        </Typography>
+        </div>
        
-
+<Vaccine/>
         <div style={{height:"5px"}}></div>
         
-        <Typography component="div" className="bg-info" style={{ height: '200px',width: '98%',margin:'auto' }} >
-<table style={{width:"100%",margin:"auto",}}>
-    <tr >
-    <th style={{padding:"60px"}}>About us?</th>
-    <th style={{padding:"60px"}}>Connect With Us</th>
-    <th style={{padding:"60px"}}>More facts</th>
-    </tr>
-    <tr>
-    <td>team Details</td>
-    <td>Instagram</td>
-    <td>More facts</td>
-    </tr>
-    
-</table>
-            
-        </Typography>
-     
+        <Footer/>
             </div>
         )
     }

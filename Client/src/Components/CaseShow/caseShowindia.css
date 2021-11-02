@@ -1,0 +1,28 @@
+h3{
+    padding-left: 90px;
+
+}
+#updated{
+    padding-left: 12rem;
+}
+h4{
+    padding-left: 13rem;
+}
+.heading{
+font-size: medium;
+}
+@media screen and (max-width:500px) {
+    h3{
+font-size: smaller;
+    }
+}
+@media screen and (max-width:400px) {
+    #updated{
+font-size: 20px;
+    }
+    .heading{
+        font-size: 20px;
+        padding-left: 23px;
+           
+    }
+}

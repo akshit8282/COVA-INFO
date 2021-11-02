@@ -13,7 +13,7 @@ import HospitalAddress from '../src/Components/Hospitaldata/hospitaladdress/hosp
 import PersonalDashboard from '../src/Components/PersonalDashboard/PersonalDashboard'
 function App() {
   return (
-    <div >
+    <div style={{width:'100%'}}>
      <Route exact path='/' component={Homepage}/>
   <Route exact path='/bed' component={delhi}/>
   

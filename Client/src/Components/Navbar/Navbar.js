@@ -15,15 +15,15 @@ class Navbar extends React.Component {
     return (
       <React.Fragment>
      
-      <nav className="navbar navbar-expand-lg nav " >
+      <nav className="navbar-light navbar-expand-lg nav bg-light" >
         
-        <div className="container" style={{height:'70px' ,color:'white'}}>
+        <div >
           <Link className="navbar-brand" to="/">COVA-INFO</Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
+            <div className="navbar-nav bg-light">
               {this.state.loggedIn ?
                 <React.Fragment>
                   <NavLink className="nav-item nav-link" to="/" exact>Home</NavLink>

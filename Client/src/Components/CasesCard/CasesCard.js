@@ -7,44 +7,26 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useTheme } from "@material-ui/styles";
 
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 270,
-  },
-});
+
 
 export default function MediaCard(props) {
-  const classes = useStyles();
-
+ 
+  
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={props.image}
-          title="Wear Mask"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h3"  className="text-center" component="h2">
-            {props.name}
-          </Typography>
-          <Typography variant="h3"  component="h1"  className="text-center" style={{color:'red'}}>
-          {props.cases}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions className="d-flex flex-row" style={{justifyContent:'space-evenly'}}>
-       
-        <Button size="small" color="primary">
-          <a href={props.link}>
-          Learn More</a>
-        </Button>
-      </CardActions>
-    </Card>
+    
+    <div className="card" style={{width:'18rem',height:'18rem'}}>
+  <div class="card-body">
+    <h5 class="card-title"> {props.name}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{props.cases}</h6>
+    
+    <a href={props.link} class="card-link">Learn More</a>
+   
+  </div>
+</div>
+    
+    
   );
 }
