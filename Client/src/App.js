@@ -11,8 +11,11 @@ import Homepage from './Components/Homepage/Homepage';
 import delhi from '../src/Components/Hospitaldata/Delhi'
 import HospitalAddress from '../src/Components/Hospitaldata/hospitaladdress/hospitaladdress'
 import PersonalDashboard from '../src/Components/PersonalDashboard/PersonalDashboard'
+import Radium, { StyleRoot } from 'radium';
+
 function App() {
   return (
+    <StyleRoot>
     <div style={{width:'100%'}}>
      <Route exact path='/' component={Homepage}/>
   <Route exact path='/bed' component={delhi}/>
@@ -26,7 +29,8 @@ function App() {
     <Route exact path='/signOut' component={signOut}/>
     <Route exact path='/data/:id' component={HospitalAddress}/>
     </div>
+    </StyleRoot>
   );
 }
 
-export default App;
+export default Radium(App);
