@@ -6,21 +6,15 @@ export class VaccineCenter extends Component {
     state={
         pincode:'',
         date:'',
-        result:[]
+        result:[],
+        searched:false
     }
     handleChange=(e)=>{
        
         e.target.name==='pincode'?(this.setState({pincode:e.target.value})):(this.setState({date:e.target.value}));
         
     }
-    componentDidMount=async()=>{
-        await axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=135001&date=3-11-2021`).then(res=>{
-            console.log(res);
-            this.setState({result:res.data.sessions});
-        }).catch(err=>{
-            console.log(err);
-        })
-    }
+    
    
       
     submihandler=async (e)=>{
@@ -34,21 +28,23 @@ export class VaccineCenter extends Component {
         }).catch(err=>{
             console.log(err);
         })
+        this.setState({searched:true});
       
      console.log(this.state.result);
       
     }
     render() {
-        
+        var arr=this.state.searched?<h6>No center found</h6>:null;
        var brr= this.state.result.length!=0?(
+           
             this.state.result.map(res=>{
                return(res.available_capacity!=0?
                 <MediaQuery minWidth={1000}>
                 {/* You can also use a function (render prop) as a child */}
                 {(matches) =>
                   matches
-                    ? <tr style={{borderBottom:'1px solid'}}>
-                    <td>{res.vaccine}</td>
+                    ? <tr style={{borderBottom:'1px solid',padding:'10px'}}>
+                    <td style={{color:'red',borderRadius:'5px',fontSize:'30px'}}> {res.vaccine}<br></br><span style={{backgroundColor:'royalblue',color:'wheat',borderRadius:'5px',fontSize:'20px'}}>{res.fee_type} {res.min_age_limit}+</span></td>
                     <td>
                         <b>
                         {res.address}
@@ -58,13 +54,15 @@ export class VaccineCenter extends Component {
                 
                 
                 <td>
+               
                     <div id="" style={{display:'flex'}}>
-                    <div style={{backgroundColor:'yellow',height:'50px',width:'40px',display:'flex',alignContent:'center',justifyContent:'center',alignSelf:'center'}}><p>1st<br></br><b>{res.available_capacity}</b></p></div>
+                   
+                    <div style={{backgroundColor:'yellow',height:'50px',width:'40px',display:'flex',alignContent:'center',justifyContent:'center',alignSelf:'center'}}><p>D1<br></br><b>{res.available_capacity}</b></p></div>
                     <div style={{backgroundColor:'blue',color:'white',height:'70px',width:'50px',display:'flex',alignContent:'center',justifyContent:'center',alignItems:'center'}}><p><b>{res.available_capacity}</b></p></div>
                     
-                    <div style={{backgroundColor:'yellow',height:'50px',width:'40px',display:'flex',alignContent:'center',justifyContent:'center',alignSelf:'center'}}><p>2nd<br></br><b>{res.available_capacity}</b></p></div><br></br>
-                    </div>&nbsp;&nbsp;&nbsp;
-                    {res.min_age_limit} and above!</td>
+                    <div style={{backgroundColor:'yellow',height:'50px',width:'40px',display:'flex',alignContent:'center',justifyContent:'center',alignSelf:'center'}}><p>D2<br></br><b>{res.available_capacity}</b></p></div><br></br>
+                    </div>
+                    </td>
                 <td>
                 {res.slots!=null?res.slots.map(s=>{
                     return <p>{s}</p>
@@ -72,12 +70,19 @@ export class VaccineCenter extends Component {
                 </td>
                 </tr>
                     : (
-                        <div style={{border:'2px solid',textAlign:'center',display:'flex',justifyContent:'center',alignContent:'center',flexDirection:'column'}}>
-                            <div>{res.vaccine}</div>
-                            <div>{res.address}</div>
-                            <div></div>
-                            <h6></h6>
-                            <h8> </h8>
+                        <div style={{border:'2px solid blue',borderRadius:'20px',padding:'10px',marginTop:'10px',display:'flex',justifyContent:'center',alignContent:'center',flexDirection:'column',}}>
+                            <div >{res.address}</div>
+                            <div style={{display:'flex',justifyContent:'space-around'}}>
+                                <div style={{color:'grey'}}> {res.name+" "+res.state_name}</div>
+                                <div style={{color:'red'}}><b>{res.vaccine}<br></br><span style={{backgroundColor:'royalblue',color:'wheat',borderRadius:'5px'}}>{res.fee_type}</span></b></div>
+                               </div>
+
+                            <div style={{display:'flex',justifyContent:'space-around'}}>
+                                <div style={{backgroundColor:'green',color:'white',borderRadius:'3px'}}>{res.min_age_limit} & above</div>
+                                <div>Dose 1 <b style={{color:'green'}}>{res.available_capacity_dose1}</b></div>
+                                <div>Dose 2 <b style={{color:'green'}}>{res.available_capacity_dose2}</b></div>
+                            </div>
+                            
 
                         </div>
                     )
@@ -85,27 +90,36 @@ export class VaccineCenter extends Component {
               
                
                </MediaQuery>
+               
                :null) 
                              
             })
-            ):null
+            ):(arr)
         return (
             
-            <div >
+            <div className="m-5">
+                <h1 className="headingVaccine">Search Your Nearest Vaccination Center</h1>
+                <h6 className="infoheading">Get a preview list of the nearest centers and check availability of vaccination slots</h6>
+                <a  href="https://www.cowin.gov.in/"><h6 className="cowinlink">Login To Book Your Slot</h6></a>
                 <form className="container formsearch" onSubmit={this.submihandler}> 
-                <input type="number" name="pincode" onChange={this.handleChange}  />
+                <input type="number" name="pincode" placeholder="Enter your City Pincode" onChange={this.handleChange}  />
                 <input type="date" name="date" onChange={this.handleChange}/>
                
                
                 </form>
-                <button id="bvaccine">Find</button>
-                <table className="conatiner"style={{width:'97%'}}>
+                <button id="bvaccine" onClick={this.submihandler}>Find</button>
+                <ul>
+               <li>Slots are updated by state vaccination centers and private hospitals everyday at 8AM, 12PM, 4PM, & 8PM.</li>
+               <li>Walk-in availableat all vaccination centers for age 18 years and above (For timings for walk-in vaccinations, please contact the vaccine center.)</li>
+               <li>D1 - Vaccine Dose #1&nbsp;&nbsp;&nbsp;D2 - Vaccine Dose #2</li>
+                </ul>
+                <table className="conatiner-fluid"style={{width:'100%',textAlign:'center'}}>
                     <thead >
                         <tr>
                             <td></td>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody >
                 {brr}
                 </tbody>
                 </table>

@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-import Card from '../CasesCard/CasesCard'
 import Navbar from '../Navbar/Navbar'
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
+
 import axios from 'axios'
 import Delhihospitalinfo from './delhihospitalinfo/delhihospitalinfo'
 import virus from '../../images/virus.png'
-import hand from '../../images/handsanitizer.png'
+
 import Header from '../header/header'
-import Divider from '../../Components/divider/divider'
+import FeedBack from '../FeedBack/FeedBack'
 import CaseShowIndia from '../CaseShow/CaseShowIndia'
 import CaseShowWorld from '../../Components/CaseShow/CaseShowWorld'
 import styles  from './Homepage.module.css';
-import CaseShow from '../CaseShow/CaseShowIndia';
+
 import VideoSection from '../VideoSection/VideoSection'
 import Footer from '../Footer/Footer'
 import Vaccine from '../Vaccine/VaccineCenter'
@@ -79,10 +78,12 @@ let date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
 <hr style={{height:"6px",width:"55%",margin:"auto",marginTop:"50px",backgroundColor:"darkblue",borderRadius:"9px"}}/>
 <VideoSection/>
         </div>
-       
+        <hr style={{height:"6px",width:"50%",margin:"auto",marginTop:"40px",backgroundColor:"darkblue",borderRadius:"9px"}}/>
+<hr style={{height:"6px",width:"55%",margin:"auto",marginTop:"50px",backgroundColor:"darkblue",borderRadius:"9px"}}/>
 <Vaccine/>
+
         <div style={{height:"5px"}}></div>
-        
+        <FeedBack/>
         <Footer/>
             </div>
         )
