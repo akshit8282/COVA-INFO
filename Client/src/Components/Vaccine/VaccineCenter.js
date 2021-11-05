@@ -101,12 +101,17 @@ export class VaccineCenter extends Component {
                 <h1 className="headingVaccine">Search Your Nearest Vaccination Center</h1>
                 <h6 className="infoheading">Get a preview list of the nearest centers and check availability of vaccination slots</h6>
                 <a  href="https://www.cowin.gov.in/"><h6 className="cowinlink">Login To Book Your Slot</h6></a>
-                <form className="container formsearch" onSubmit={this.submihandler}> 
-                <input type="number" name="pincode" placeholder="Enter your City Pincode" onChange={this.handleChange}  />
-                <input type="date" name="date" onChange={this.handleChange}/>
-               
-               
-                </form>
+                <form>
+  <div class="form-row ">
+    <div class="col">
+      <input type="number" class="form-control" name="pincode" onChange={this.handleChange} placeholder="Enter your City Pincode"/>
+    </div>
+    <div class="col">
+      <input  type="date"  class="form-control" name="date" onChange={this.handleChange} placeholder=""/>
+    </div>
+  </div>
+</form>
+                
                 <button id="bvaccine" onClick={this.submihandler}>Find</button>
                 <ul>
                <li>Slots are updated by state vaccination centers and private hospitals everyday at 8AM, 12PM, 4PM, & 8PM.</li>

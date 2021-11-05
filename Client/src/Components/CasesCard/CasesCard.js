@@ -16,15 +16,20 @@ export default function MediaCard(props) {
  
   
   return (
-    
-    <div className="card" style={{width:'18rem',height:'18rem'}}>
-  <div class="card-body">
-    <h5 class="card-title"> {props.name}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{props.cases}</h6>
-    
-    <a href={props.link} class="card-link">Learn More</a>
-   
+    <div className="container-fluid" >    <div class="card text-white  mb-3 mt-3" style={{maxWidth:'30rem',height:'15rem',borderRadius:'30px',backgroundColor:`${props.backgroundcolor}`}}>
+  <div class="card-header" style={{textAlign:'center',fontSize:'2rem',}}>{props.header}</div>
+  <div style={{display:'flex',justifyContent:'space-between'}}>
+  <div class="card-body" >
+    <h5 class="card-title" style={{fontSize:'1.4rem'}}>{props.confirmedcases}</h5>
+    <p class="card-text" style={{textAlign:'center'}} >123445555</p>
   </div>
+  <div class="card-body">
+    <h5 class="card-title"  style={{fontSize:'1.4rem'}}>{props.confirmeddeaths}</h5>
+    <p class="card-text" style={{textAlign:'center'}}>12334455</p>
+  </div>
+  </div>
+</div>
+
 </div>
     
     

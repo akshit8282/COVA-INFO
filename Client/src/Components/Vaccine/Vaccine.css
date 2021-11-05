@@ -1,23 +1,20 @@
 .formsearch{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 input[type=number]{
     border: 3px solid blue;
-    padding: 10px;
+   
     border-radius: 30px;
-    width: 40rem;
-    height: 4rem;
-    font-size: 1.5rem;
+    
     
 }
 input[type=date]{
     border: 3px solid blue;
-    padding: 10px;
+   
     border-radius: 30px;
-    width: 20rem;
-    height: 4rem;
-    margin-left: 10px;
+    
    
 }
 .cowinlink{
@@ -53,15 +50,8 @@ border-radius: 30px;
     .formsearch{
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
     }
-    input[type=date]{
-        border: 3px solid blue;
-        padding: 10px;
-        border-radius: 30px;
-        width: 20rem;
-        height: 4rem;
-        margin-left: 170px;
-        margin-top: 20px;
-       
-    }
+    
 }

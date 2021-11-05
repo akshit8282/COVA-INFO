@@ -12,11 +12,12 @@ import delhi from '../src/Components/Hospitaldata/Delhi'
 import HospitalAddress from '../src/Components/Hospitaldata/hospitaladdress/hospitaladdress'
 import PersonalDashboard from '../src/Components/PersonalDashboard/PersonalDashboard'
 import Radium, { StyleRoot } from 'radium';
+import './App.css'
 
 function App() {
   return (
     <StyleRoot>
-    <div style={{width:'100%'}}>
+    <div className="App" style={{width:'100%'}}>
      <Route exact path='/' component={Homepage}/>
   <Route exact path='/bed' component={delhi}/>
   
